@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -38,13 +39,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: homologation environment
+      - name: Deploy homol
         run: echo "Running deploy in a homologation environment"
 
-    production:
-     needs: homologation
-     runs-on: ubuntu-latest
+  production:
+    needs: homologation
+    runs-on: ubuntu-latest
 
-     steps:
-      - name: Deploy prod
-        run: echo "Running deploy of PRD"
+    steps:
+     - name: Deploy prod
+       run: echo "Running deploy of PRD"
