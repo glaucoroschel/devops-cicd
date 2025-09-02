@@ -13,5 +13,42 @@ jobs:
         uses: actions/checkout@v4
 
 
-      - name: Show the message
-        run: echo "Hello, World Devops!"
+#      - name: Show the message
+#        run: echo "Hello, World Devops!"
+
+      - name: Application build
+        run: echo "Building an application!"
+
+  dev:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Development Phase
+        run: echo "Deploying on develop environment"
+
+  qa:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Quality and tests Phase
+        run: echo "Running quality tests"
+
+  homologation:
+    needs:
+     - dev
+     - qa
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: homologation environment
+        run: echo "Running deploy in a homologation environment"
+
+    production:
+     needs: homologation
+     runs-on: ubuntu-latest
+
+     steps:
+      - name: Deploy prod
+        run: echo "Running deploy of PRD"
