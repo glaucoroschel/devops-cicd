@@ -12,10 +12,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-
-#      - name: Show the message
-#        run: echo "Hello, World Devops!"
-
       - name: Application build
         run: echo "Building an application!"
 
